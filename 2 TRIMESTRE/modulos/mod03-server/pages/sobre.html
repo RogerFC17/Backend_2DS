@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre o Projeto | Biblioteca Católica</title>
+    <style>
+        @import url('https://googleapis.com');
+
+        /* Variáveis de Cores (Paleta Católica Clássica) */
+        :root {
+            --bg-principal: #fbf9f5;
+            --texto-escuro: #2c2520;
+            --texto-suave: #6b5a4c;
+            --borda: #e6dfd3;
+            --vermelho-sacro: #8c1d1d;
+            --vermelho-hover: #6e1616;
+            --creme-badge: #f3eae1;
+        }
+
+        /* Reset e Estilos Gerais */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-principal);
+            color: var(--texto-escuro);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            line-height: 1.6;
+        }
+
+        /* Tipografia Especial */
+        .serif-titulo {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.05em;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: #4a3f35;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--vermelho-sacro);
+            mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTQgMTloMTZhMiAyIDAgMCAwIDItMlY1YTIgMiAwIDAgMC0yLTJINHoiLz48cGF0aCBkPSJNNiAyMnYtNSIvPjxwYXRoIGQ9Ik0xMCAyMnYtNSIvPjwvc3ZnPg==") no-repeat center;
+            -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTQgMTloMTZhMiAyIDAgMCAwIDItMlY1YTIgMiAwIDAgMC0yLTJINHoiLz48cGF0aCBkPSJNNiAyMnYtNSIvPjxwYXRoIGQ9Ik0xMCAyMnYtNSIvPjwvc3ZnPg==") no-repeat center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--texto-suave);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--vermelho-sacro);
+        }
+
+        /* Conteúdo Principal */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Seção Introdução */
+        .sobre-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--creme-badge);
+            color: var(--vermelho-sacro);
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .book-icon {
+            width: 12px;
+            height: 12px;
+            background-color: var(--vermelho-sacro);
+            mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTIgM2g0YTIgMiAwIDAgMSAyIDJ2MTRhMiAyIDAgMCAwLTItMkgydm0yMC0xNmgtNGEyIDIgMCAwIDAtMiAydjE0YTIgMiAwIDAgMSAyLTJoNHYiLz48L3N2Zz4=") no-repeat center;
+            -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTIgM2g0YTIgMiAwIDAgMSAyIDJ2MTRhMiAyIDAgMCAwLTItMkgydm0yMC0xNmgtNGEyIDIgMCAwIDAtMiAydjE0YTIgMiAwIDAgMSAyLTJoNHYiLz48L3N2Zz4=") no-repeat center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #3a3028;
+            margin-bottom: 1rem;
+        }
+
+        .subtitulo {
+            color: var(--texto-suave);
+            font-size: 1.1rem;
+        }
+
+        /* Grid de Pilares / Objetivos */
+        .grid-pilares {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .card-pilar {
+            background-color: #ffffff;
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .card-pilar h3 {
+            color: var(--vermelho-sacro);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .card-pilar p {
+            color: var(--texto-suave);
+            font-size: 0.95rem;
+        }
+
+        /* Texto Institucional */
+        .texto-institucional {
+            color: var(--texto-escuro);
+            font-size: 1.05rem;
+            margin-bottom: 3rem;
+        }
+
+        .texto-institucional p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Rodapé */
+        footer {
+            border-top: 1px solid var(--borda);
+            background-color: rgba(244, 224, 204, 0.15);
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #8c7a6b;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+
+        /* Responsividade */
+        @media (min-width: 600px) {
+            .grid-pilares {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <div class="logo-icon"></div>
+                <span class="serif-titulo">Biblioteca Católica</span>
+            </a>
+            <nav>
+                <a href="/" class="nav-link">&larr; Voltar ao Início</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        
+        <div class="sobre-header">
+            <div class="badge">
+                <div class="book-icon"></div> Nossa Missão
+            </div>
+            <h1 class="serif-titulo">Sobre o Projeto</h1>
+            <p class="subtitulo">Preservando a Tradição, a Beleza e o Conhecimento da Fé.</p>
+        </div>
+
+        <section class="texto-institucional">
+            <p>
+                A <strong>Biblioteca Católica</strong> nasceu do desejo de centralizar, preservar e tornar acessível a riqueza literária e teológica produzida ao longo de dois milênios da história da Igreja.
+            </p>
+            <p>
+                Este espaço digital foi projetado para acolher estudantes, pesquisadores e fiéis que buscam profundidade intelectual e espiritual. Reunimos desde as cartas fundamentais da Patrística até os grandes tratados da Escolástica e do Magistério.
+            </p>
+        </section>
+
+        <!-- Pilares do Projeto -->
+        <section class="grid-pilares">
+            <div class="card-pilar">
+                <h3 class="serif-titulo">Fidelidade</h3>
+                <p>Garantia de textos alinhados à sã doutrina e ao autêntico Magistério da Igreja.</p>
+            </div>
+            <div class="card-pilar">
+                <h3 class="serif-titulo">Acessibilidade</h3>
+                <p>Disponibilização gratuita de obras fundamentais que moldaram a civilização ocidental.</p>
+            </div>
+            <div class="card-pilar">
+                <h3 class="serif-titulo">Beleza Visual</h3>
+                <p>Um ambiente de leitura digital sóbrio, propício ao estudo recolhido e à meditação.</p>
+            </div>
+            <div class="card-pilar">
+                <h3 class="serif-titulo">Acervo Vivo</h3>
+                <p>Atualizações contínuas com novas digitalizações de tesouros da literatura sacra.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Biblioteca Católica. "Instaurare omnia in Christo".</p>
+    </footer>
+
+</body>
+</html>

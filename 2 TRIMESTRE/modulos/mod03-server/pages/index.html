@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial | Biblioteca Católica</title>
+    <style>
+        @import url('https://googleapis.com');
+
+        /* Variáveis de Cores (Paleta Católica Clássica) */
+        :root {
+            --bg-principal: #fbf9f5;
+            --texto-escuro: #2c2520;
+            --texto-suave: #6b5a4c;
+            --borda: #e6dfd3;
+            --vermelho-sacro: #8c1d1d;
+            --vermelho-hover: #6e1616;
+            --creme-badge: #f3eae1;
+        }
+
+        /* Reset e Estilos Gerais */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-principal);
+            color: var(--texto-escuro);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            line-height: 1.5;
+        }
+
+        /* Tipografia Especial */
+        .serif-titulo {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.05em;
+        }
+
+        /* Cabeçalho */
+        header {
+            border-b: 1px solid var(--borda);
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: #4a3f35;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--vermelho-sacro);
+            mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTQgMTloMTZhMiAyIDAgMCAwIDItMlY1YTIgMiAwIDAgMC0yLTJINHoiLz48cGF0aCBkPSJNNiAyMnYtNSIvPjxwYXRoIGQ9Ik0xMCAyMnYtNSIvPjwvc3ZnPg==") no-repeat center;
+            -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTQgMTloMTZhMiAyIDAgMCAwIDItMlY1YTIgMiAwIDAgMC0yLTJINHoiLz48cGF0aCBkPSJNNiAyMnYtNSIvPjxwYXRoIGQ9Ik0xMCAyMnYtNSIvPjwvc3ZnPg==") no-repeat center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--texto-suave);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--vermelho-sacro);
+        }
+
+        /* Conteúdo Principal */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+            flex-grow: 1;
+        }
+
+        .conteudo-texto {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        /* Badge Pax Vobiscum */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--creme-badge);
+            color: var(--vermelho-sacro);
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cross-icon {
+            width: 12px;
+            height: 12px;
+            background-color: var(--vermelho-sacro);
+            mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTEyIDJ2MjBNNSA5aDE0Ii8+PC9zdmc+") no-repeat center;
+            -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTEyIDJ2MjBNNSA5aDE0Ii8+PC9zdmc+") no-repeat center;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            color: #3a3028;
+            line-height: 1.2;
+        }
+
+        .descricao {
+            color: var(--texto-suave);
+            font-size: 1.1rem;
+            max-w-xl: 500px;
+            margin: 0 auto;
+        }
+
+        /* Botão Moderno */
+        .btn-principal {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--vermelho-sacro);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .btn-principal:hover {
+            background-color: var(--vermelho-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(140, 29, 29, 0.15);
+        }
+
+        /* Container da Imagem */
+        .conteudo-imagem {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .wrapper-imagem {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            border: 4px solid #ffffff;
+            background-color: #e6dfd3;
+        }
+
+        .wrapper-imagem img {
+            width: 100%;
+            height: 320px;
+            object-cover: cover;
+            display: block;
+            filter: sepia(10%) brightness(95%);
+        }
+
+        /* Rodapé */
+        footer {
+            border-top: 1px solid var(--borda);
+            background-color: rgba(244, 224, 204, 0.15);
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #8c7a6b;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+
+        /* Responsividade para Telas Maiores (Desktops) */
+        @media (min-width: 768px) {
+            main {
+                flex-direction: row;
+                gap: 4rem;
+                padding: 5rem 1.5rem;
+            }
+
+            .conteudo-texto {
+                text-align: left;
+                align-items: flex-start;
+                flex: 1;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .conteudo-imagem {
+                flex: 1;
+                max-width: none;
+            }
+
+            .wrapper-imagem img {
+                height: 420px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <span class="serif-titulo">Biblioteca Católica</span>
+            </div>
+            <nav>
+                <a href="/sobre" class="nav-link">Sobre o Projeto &rarr;</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        
+        <div class="conteudo-texto">
+            <div class="badge">
+                <div class="cross-icon"></div> Pax Vobiscum
+            </div>
+            <h1 class="serif-titulo">Seja bem-vindo à sua busca pela Verdade.</h1>
+            <p class="descricao">Olá, você está em casa. Explore nosso acervo digital de textos sagrados, patrística, teologia e a rica tradição literária da Igreja.</p>
+            <div>
+                <a href="/sobre" class="btn-principal">Conhecer a Biblioteca</a>
+            </div>
+        </div>
+
+        <div class="conteudo-imagem">
+            <div class="wrapper-imagem">
+                <img src="https://unsplash.com" alt="Biblioteca Clássica">
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Biblioteca Católica. "Instaurare omnia in Christo".</p>
+    </footer>
+
+</body>
+</html>
