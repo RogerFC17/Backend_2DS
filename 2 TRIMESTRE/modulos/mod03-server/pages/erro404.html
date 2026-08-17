@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Não Encontrada | Biblioteca Católica</title>
+    <style>
+        @import url('https://googleapis.com');
+
+        /* Variáveis de Cores (Paleta Católica Clássica) */
+        :root {
+            --bg-principal: #fbf9f5;
+            --texto-escuro: #2c2520;
+            --texto-suave: #6b5a4c;
+            --borda: #e6dfd3;
+            --vermelho-sacro: #8c1d1d;
+            --vermelho-hover: #6e1616;
+            --creme-badge: #f3eae1;
+        }
+
+        /* Reset e Estilos Gerais */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-principal);
+            color: var(--texto-escuro);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            line-height: 1.6;
+        }
+
+        /* Tipografia Especial */
+        .serif-titulo {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.05em;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: #4a3f35;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--vermelho-sacro);
+            mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTQgMTloMTZhMiAyIDAgMCAwIDItMlY1YTIgMiAwIDAgMC0yLTJINHoiLz48cGF0aCBkPSJNNiAyMnYtNSIvPjxwYXRoIGQ9Ik0xMCAyMnYtNSIvPjwvc3ZnPg==") no-repeat center;
+            -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTQgMTloMTZhMiAyIDAgMCAwIDItMlY1YTIgMiAwIDAgMC0yLTJINHoiLz48cGF0aCBkPSJNNiAyMnYtNSIvPjxwYXRoIGQ9Ik0xMCAyMnYtNSIvPjwvc3ZnPg==") no-repeat center;
+        }
+
+        /* Conteúdo Principal (Centralizado para Erro) */
+        main {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        /* Código de Erro Grande */
+        .erro-codigo {
+            font-size: 6rem;
+            font-weight: 700;
+            color: var(--vermelho-sacro);
+            line-height: 1;
+            opacity: 0.85;
+            margin-bottom: -0.5rem;
+        }
+
+        .badge-erro {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--creme-badge);
+            color: var(--vermelho-sacro);
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .compass-icon {
+            width: 14px;
+            height: 14px;
+            background-color: var(--vermelho-sacro);
+            mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cG9seWdvbiBwb2ludHM9IjE2LjI0IDcuNzYgMTQuMTIgMTQuMTIgNy43NiAxNi4yNCA5Ljg4IDkuODggMTYuMjQgNy43NiIvPjwvc3ZnPg==") no-repeat center;
+            -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cG9seWdvbiBwb2ludHM9IjE2LjI0IDcuNzYgMTQuMTIgMTQuMTIgNy43NiAxNi4yNCA5Ljg4IDkuODggMTYuMjQgNy43NiIvPjwvc3ZnPg==") no-repeat center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #3a3028;
+        }
+
+        .descricao {
+            color: var(--texto-suave);
+            font-size: 1.05rem;
+            max-width: 480px;
+        }
+
+        /* Botão de Retorno */
+        .btn-retornar {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--vermelho-sacro);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-retornar:hover {
+            background-color: var(--vermelho-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(140, 29, 29, 0.15);
+        }
+
+        /* Rodapé */
+        footer {
+            border-top: 1px solid var(--borda);
+            background-color: rgba(244, 224, 204, 0.15);
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #8c7a6b;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <div class="logo-icon"></div>
+                <span class="serif-titulo">Biblioteca Católica</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal (Mensagem 404) -->
+    <main>
+        <div class="erro-codigo serif-titulo">404</div>
+        
+        <div class="badge-erro">
+            <div class="compass-icon"></div> Caminho Extraviado
+        </div>
+        
+        <h1 class="serif-titulo">Página Não Encontrada</h1>
+        
+        <p class="descricao">
+            "A quem busca, a Verdade se manifesta." <br>
+            No entanto, o manuscrito ou documento que você tentou acessar não foi localizado em nosso acervo digital.
+        </p>
+        
+        <div>
+            <a href="/" class="btn-retornar">&larr; Retornar à Página Inicial</a>
+            <a href="/erro" class="btn-retornar">&larr; Página de erro!</a>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Biblioteca Católica. "Instaurare omnia in Christo".</p>
+    </footer>
+
+</body>
+</html>
